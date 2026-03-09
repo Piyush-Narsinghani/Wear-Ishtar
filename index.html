@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wear Ishtar</title>
+<title>इश्तर</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;700&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,6 +18,8 @@
 --light:#fafafa;
 }
 
+/* GLOBAL */
+
 *{
 margin:0;
 padding:0;
@@ -26,9 +28,9 @@ box-sizing:border-box;
 
 body{
 font-family:Poppins;
-background:linear-gradient(180deg,#ffffff,#fafafa);
-color:#222;
+background:#fafafa;
 overflow-x:hidden;
+color:#222;
 }
 
 /* NAVBAR */
@@ -43,25 +45,25 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-padding:18px 8%;
+padding:20px 8%;
 
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(16px);
+background:rgba(255,255,255,.75);
+backdrop-filter:blur(14px);
 
 z-index:1000;
-
-border-bottom:1px solid rgba(0,0,0,0.05);
 
 }
 
 .logo{
 
-font-family:'Playfair Display';
-font-size:28px;
+font-family:'Noto Serif Devanagari';
+font-size:36px;
 
 background:linear-gradient(45deg,#c9a25c,#e7d0a0);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
+letter-spacing:5px;
 
 }
 
@@ -86,12 +88,41 @@ background-position:center;
 
 color:white;
 
+position:relative;
+
 }
+
+/* Hindi watermark */
+
+.watermark{
+
+position:absolute;
+
+font-family:'Noto Serif Devanagari';
+
+font-size:280px;
+
+color:rgba(255,255,255,0.06);
+
+pointer-events:none;
+
+white-space:nowrap;
+
+}
+
+.hero .watermark{
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+/* HERO TEXT */
 
 .hero h1{
 
-font-size:72px;
+font-size:70px;
 font-family:'Playfair Display';
+
 margin-bottom:20px;
 
 }
@@ -123,7 +154,6 @@ transition:.3s;
 .btn:hover{
 
 transform:translateY(-4px);
-box-shadow:0 20px 40px rgba(212,175,122,.6);
 
 }
 
@@ -133,6 +163,7 @@ box-shadow:0 20px 40px rgba(212,175,122,.6);
 
 padding:120px 8%;
 text-align:center;
+position:relative;
 
 }
 
@@ -161,7 +192,6 @@ gap:40px;
 
 background:white;
 border-radius:18px;
-
 overflow:hidden;
 
 position:relative;
@@ -176,7 +206,7 @@ transition:.35s;
 
 .card:hover{
 
-box-shadow:0 35px 70px rgba(0,0,0,0.15);
+box-shadow:0 30px 60px rgba(0,0,0,0.15);
 
 }
 
@@ -187,27 +217,9 @@ height:340px;
 
 object-fit:cover;
 
-background:
-linear-gradient(
-90deg,
-#eee 25%,
-#f5f5f5 37%,
-#eee 63%
-);
-
-background-size:400% 100%;
-animation:shimmer 1.5s infinite;
-
 }
 
-@keyframes shimmer{
-
-0%{background-position:-400px 0}
-100%{background-position:400px 0}
-
-}
-
-/* CURSOR LIGHT */
+/* Cursor light */
 
 .card::before{
 
@@ -222,7 +234,7 @@ height:100%;
 
 background:
 radial-gradient(circle at var(--x) var(--y),
-rgba(255,255,255,.35),
+rgba(255,255,255,.4),
 transparent 60%);
 
 opacity:0;
@@ -235,15 +247,14 @@ transition:.3s;
 opacity:1;
 }
 
-/* OVERLAY */
+/* overlay */
 
 .overlay{
 
 position:absolute;
-
 bottom:0;
-width:100%;
 
+width:100%;
 padding:14px;
 
 background:linear-gradient(transparent,rgba(0,0,0,.7));
@@ -253,7 +264,7 @@ font-size:13px;
 
 }
 
-/* REVEAL */
+/* reveal */
 
 .reveal{
 
@@ -271,47 +282,19 @@ transform:translateY(0);
 
 }
 
-/* STORY */
-
-.story{
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:70px;
-
-align-items:center;
-
-padding:120px 8%;
-
-}
-
-.story img{
-
-width:100%;
-border-radius:14px;
-
-box-shadow:0 20px 40px rgba(0,0,0,0.1);
-
-}
-
-.story h2{
-
-font-family:'Playfair Display';
-margin-bottom:20px;
-
-}
-
 /* CTA */
 
 .cta{
 
-padding:100px;
-
-text-align:center;
+padding:120px;
 
 background:linear-gradient(135deg,#e8d3a5,#d4af7a);
 
+text-align:center;
+
 color:white;
+
+position:relative;
 
 }
 
@@ -320,23 +303,25 @@ color:white;
 font-family:'Playfair Display';
 font-size:48px;
 
-margin-bottom:20px;
-
 }
 
 .cta a{
 
-padding:14px 34px;
-border-radius:40px;
+margin-top:30px;
+display:inline-block;
+
+padding:14px 32px;
 
 background:white;
 color:black;
+
+border-radius:40px;
 
 text-decoration:none;
 
 }
 
-/* WHATSAPP BUTTON */
+/* WhatsApp button */
 
 .whatsapp{
 
@@ -363,17 +348,28 @@ box-shadow:0 15px 30px rgba(0,0,0,0.2);
 
 }
 
-/* FOOTER */
+/* Footer */
 
 footer{
 
-margin-top:120px;
-
-padding:40px;
-text-align:center;
+padding:80px;
 
 background:#111;
-color:#aaa;
+
+text-align:center;
+
+color:white;
+
+}
+
+.footer-logo{
+
+font-family:'Noto Serif Devanagari';
+font-size:60px;
+
+color:var(--gold);
+
+margin-bottom:20px;
 
 }
 
@@ -385,8 +381,8 @@ color:#aaa;
 font-size:40px;
 }
 
-.story{
-grid-template-columns:1fr;
+.watermark{
+font-size:120px;
 }
 
 }
@@ -399,18 +395,21 @@ grid-template-columns:1fr;
 
 <nav>
 
-<div class="logo">Wear Ishtar</div>
+<div class="logo">इश्तर</div>
+
 <div>Luxury Jewelry</div>
 
 </nav>
 
 <section class="hero">
 
+<div class="watermark">इश्तर</div>
+
 <div>
 
-<h1>Jewelry That Stays With You</h1>
+<h1>Find Your Favorite Piece</h1>
 
-<p>Elegant anti-tarnish jewelry designed for everyday beauty</p>
+<p>Elegant anti-tarnish jewelry for everyday beauty</p>
 
 <a class="btn" href="#shop">Explore Collection</a>
 
@@ -420,45 +419,29 @@ grid-template-columns:1fr;
 
 <section class="section" id="shop">
 
+<div class="watermark" style="top:30%;left:50%;transform:translateX(-50%);">इश्तर</div>
+
 <h2>Latest Pieces</h2>
 
 <div class="grid" id="productGrid"></div>
 
 </section>
 
-<section class="story reveal">
-
-<img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338">
-
-<div>
-
-<h2>The Story of Wear Ishtar</h2>
-
-<p>
-Wear Ishtar blends minimal fashion with timeless jewelry pieces that elevate everyday style.
-</p>
-
-<p>
-Our anti-tarnish collections are designed to stay beautiful while remaining effortless.
-</p>
-
-</div>
-
-</section>
-
 <section class="cta">
 
-<h2>Find Your Favorite Piece</h2>
+<div class="watermark">इश्तर</div>
 
-<p>Order directly through WhatsApp</p>
+<h2>Order Your Favorite Piece</h2>
 
-<a href="https://wa.me/91XXXXXXXXXX">Chat Now</a>
+<a href="https://wa.me/91XXXXXXXXXX">Chat on WhatsApp</a>
 
 </section>
 
 <footer>
 
-© Wear Ishtar
+<div class="footer-logo">इश्तर</div>
+
+<p>Luxury Jewelry</p>
 
 </footer>
 
@@ -466,7 +449,7 @@ Our anti-tarnish collections are designed to stay beautiful while remaining effo
 
 <script>
 
-/* CSV PARSER */
+/* CSV parser */
 
 function parseCSV(text){
 
@@ -486,7 +469,7 @@ data.push(cols.map(c=>c.replace(/"/g,"")));
 return data;
 }
 
-/* LOAD PRODUCTS */
+/* load instagram posts */
 
 fetch("instagram.csv")
 .then(r=>r.text())
@@ -519,25 +502,21 @@ grid.appendChild(card);
 
 });
 
-/* SCROLL REVEAL */
+/* reveal animation */
 
 const observer=new IntersectionObserver(entries=>{
 
 entries.forEach(entry=>{
-
 if(entry.isIntersecting){
-
 entry.target.classList.add("visible");
-
 }
-
 });
 
 });
 
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-/* 3D HOVER */
+/* card tilt + light */
 
 document.querySelectorAll(".card").forEach(card=>{
 
@@ -568,7 +547,7 @@ card.style.transform="rotateX(0) rotateY(0)";
 
 });
 
-/* PARALLAX HERO */
+/* hero parallax */
 
 window.addEventListener("scroll",()=>{
 
