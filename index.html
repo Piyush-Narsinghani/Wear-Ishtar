@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wear Ishtar</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--gold:#d4af7a;
+--dark:#111;
+--light:#fafafa;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Poppins;
+background:linear-gradient(180deg,#ffffff,#fafafa);
+color:#222;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+
+position:fixed;
+top:0;
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:18px 8%;
+
+background:rgba(255,255,255,.7);
+backdrop-filter:blur(16px);
+
+z-index:1000;
+
+border-bottom:1px solid rgba(0,0,0,0.05);
+
+}
+
+.logo{
+
+font-family:'Playfair Display';
+font-size:28px;
+
+background:linear-gradient(45deg,#c9a25c,#e7d0a0);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/* HERO */
+
+.hero{
+
+height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+background:
+linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+url("https://images.unsplash.com/photo-1611085583191-a3b181a88401");
+
+background-size:cover;
+background-position:center;
+
+color:white;
+
+}
+
+.hero h1{
+
+font-size:72px;
+font-family:'Playfair Display';
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:20px;
+margin-bottom:40px;
+
+}
+
+.btn{
+
+padding:16px 36px;
+
+background:linear-gradient(135deg,#d4af7a,#e8cfa0);
+
+border-radius:40px;
+
+text-decoration:none;
+color:white;
+
+box-shadow:0 10px 30px rgba(212,175,122,.5);
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-4px);
+box-shadow:0 20px 40px rgba(212,175,122,.6);
+
+}
+
+/* SECTION */
+
+.section{
+
+padding:120px 8%;
+text-align:center;
+
+}
+
+.section h2{
+
+font-family:'Playfair Display';
+font-size:48px;
+
+margin-bottom:70px;
+
+}
+
+/* GRID */
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+
+}
+
+/* PRODUCT CARD */
+
+.card{
+
+background:white;
+border-radius:18px;
+
+overflow:hidden;
+
+position:relative;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+
+transform-style:preserve-3d;
+
+transition:.35s;
+
+}
+
+.card:hover{
+
+box-shadow:0 35px 70px rgba(0,0,0,0.15);
+
+}
+
+.card img{
+
+width:100%;
+height:340px;
+
+object-fit:cover;
+
+background:
+linear-gradient(
+90deg,
+#eee 25%,
+#f5f5f5 37%,
+#eee 63%
+);
+
+background-size:400% 100%;
+animation:shimmer 1.5s infinite;
+
+}
+
+@keyframes shimmer{
+
+0%{background-position:-400px 0}
+100%{background-position:400px 0}
+
+}
+
+/* CURSOR LIGHT */
+
+.card::before{
+
+content:"";
+
+position:absolute;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+radial-gradient(circle at var(--x) var(--y),
+rgba(255,255,255,.35),
+transparent 60%);
+
+opacity:0;
+
+transition:.3s;
+
+}
+
+.card:hover::before{
+opacity:1;
+}
+
+/* OVERLAY */
+
+.overlay{
+
+position:absolute;
+
+bottom:0;
+width:100%;
+
+padding:14px;
+
+background:linear-gradient(transparent,rgba(0,0,0,.7));
+
+color:white;
+font-size:13px;
+
+}
+
+/* REVEAL */
+
+.reveal{
+
+opacity:0;
+transform:translateY(80px);
+
+transition:1s cubic-bezier(.19,1,.22,1);
+
+}
+
+.reveal.visible{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+/* STORY */
+
+.story{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+
+align-items:center;
+
+padding:120px 8%;
+
+}
+
+.story img{
+
+width:100%;
+border-radius:14px;
+
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
+
+}
+
+.story h2{
+
+font-family:'Playfair Display';
+margin-bottom:20px;
+
+}
+
+/* CTA */
+
+.cta{
+
+padding:100px;
+
+text-align:center;
+
+background:linear-gradient(135deg,#e8d3a5,#d4af7a);
+
+color:white;
+
+}
+
+.cta h2{
+
+font-family:'Playfair Display';
+font-size:48px;
+
+margin-bottom:20px;
+
+}
+
+.cta a{
+
+padding:14px 34px;
+border-radius:40px;
+
+background:white;
+color:black;
+
+text-decoration:none;
+
+}
+
+/* WHATSAPP BUTTON */
+
+.whatsapp{
+
+position:fixed;
+
+bottom:30px;
+right:30px;
+
+width:60px;
+height:60px;
+
+background:#25D366;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:28px;
+color:white;
+
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+
+}
+
+/* FOOTER */
+
+footer{
+
+margin-top:120px;
+
+padding:40px;
+text-align:center;
+
+background:#111;
+color:#aaa;
+
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.hero h1{
+font-size:40px;
+}
+
+.story{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">Wear Ishtar</div>
+<div>Luxury Jewelry</div>
+
+</nav>
+
+<section class="hero">
+
+<div>
+
+<h1>Jewelry That Stays With You</h1>
+
+<p>Elegant anti-tarnish jewelry designed for everyday beauty</p>
+
+<a class="btn" href="#shop">Explore Collection</a>
+
+</div>
+
+</section>
+
+<section class="section" id="shop">
+
+<h2>Latest Pieces</h2>
+
+<div class="grid" id="productGrid"></div>
+
+</section>
+
+<section class="story reveal">
+
+<img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338">
+
+<div>
+
+<h2>The Story of Wear Ishtar</h2>
+
+<p>
+Wear Ishtar blends minimal fashion with timeless jewelry pieces that elevate everyday style.
+</p>
+
+<p>
+Our anti-tarnish collections are designed to stay beautiful while remaining effortless.
+</p>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>Find Your Favorite Piece</h2>
+
+<p>Order directly through WhatsApp</p>
+
+<a href="https://wa.me/91XXXXXXXXXX">Chat Now</a>
+
+</section>
+
+<footer>
+
+© Wear Ishtar
+
+</footer>
+
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">💬</a>
+
+<script>
+
+/* CSV PARSER */
+
+function parseCSV(text){
+
+let rows=text.trim().split("\n");
+let data=[];
+
+for(let i=1;i<rows.length;i++){
+
+let cols=rows[i].match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+
+if(cols){
+data.push(cols.map(c=>c.replace(/"/g,"")));
+}
+
+}
+
+return data;
+}
+
+/* LOAD PRODUCTS */
+
+fetch("instagram.csv")
+.then(r=>r.text())
+.then(text=>{
+
+const rows=parseCSV(text);
+const grid=document.getElementById("productGrid");
+
+rows.forEach(r=>{
+
+let post=r[0];
+let image=r[1];
+let type=r[2];
+
+if(image){
+
+let card=document.createElement("div");
+card.className="card reveal";
+
+card.innerHTML=`
+<a href="${post}" target="_blank">
+<img src="${image}">
+<div class="overlay">${type}</div>
+</a>
+`;
+
+grid.appendChild(card);
+
+}
+
+});
+
+/* SCROLL REVEAL */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+/* 3D HOVER */
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+let rect=card.getBoundingClientRect();
+
+let x=e.clientX-rect.left;
+let y=e.clientY-rect.top;
+
+let rotateX=(y/rect.height-0.5)*-12;
+let rotateY=(x/rect.width-0.5)*12;
+
+card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+card.style.setProperty("--x",x+"px");
+card.style.setProperty("--y",y+"px");
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="rotateX(0) rotateY(0)";
+
+});
+
+});
+
+});
+
+/* PARALLAX HERO */
+
+window.addEventListener("scroll",()=>{
+
+let scroll=window.scrollY;
+
+document.querySelector(".hero").style.backgroundPositionY=
+scroll*0.5+"px";
+
+});
+
+</script>
+
+</body>
+</html>
