@@ -12,10 +12,17 @@
 
 <style>
 
+/* COLOR SYSTEM */
+
 :root{
+
 --gold:#d4af7a;
---dark:#111;
+--gold-light:#f1e2c4;
+--gold-dark:#b8945e;
+
+--dark:#0f0f0f;
 --light:#fafafa;
+
 }
 
 /* GLOBAL */
@@ -28,7 +35,7 @@ box-sizing:border-box;
 
 body{
 font-family:Poppins;
-background:#fafafa;
+background:var(--light);
 overflow-x:hidden;
 color:#222;
 }
@@ -47,10 +54,22 @@ align-items:center;
 
 padding:20px 8%;
 
-background:rgba(255,255,255,.75);
-backdrop-filter:blur(14px);
+background:rgba(15,15,15,0.65);
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(212,175,122,0.25);
 
 z-index:1000;
+
+transition:background .4s, box-shadow .4s;
+
+}
+
+nav.scrolled{
+
+background:rgba(255,255,255,0.95);
+
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
 
 }
 
@@ -59,11 +78,17 @@ z-index:1000;
 font-family:'Noto Serif Devanagari';
 font-size:36px;
 
-background:linear-gradient(45deg,#c9a25c,#e7d0a0);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+letter-spacing:10px;
 
-letter-spacing:5px;
+color:#e7cfa3;
+
+transition:color .3s;
+
+}
+
+nav.scrolled .logo{
+
+color:var(--gold-dark);
 
 }
 
@@ -92,7 +117,7 @@ position:relative;
 
 }
 
-/* Hindi watermark */
+/* WATERMARK */
 
 .watermark{
 
@@ -100,7 +125,7 @@ position:absolute;
 
 font-family:'Noto Serif Devanagari';
 
-font-size:280px;
+font-size:260px;
 
 color:rgba(255,255,255,0.06);
 
@@ -138,7 +163,7 @@ margin-bottom:40px;
 
 padding:16px 36px;
 
-background:linear-gradient(135deg,#d4af7a,#e8cfa0);
+background:linear-gradient(135deg,var(--gold-light),var(--gold));
 
 border-radius:40px;
 
@@ -186,7 +211,7 @@ gap:40px;
 
 }
 
-/* PRODUCT CARD */
+/* CARD */
 
 .card{
 
@@ -219,7 +244,7 @@ object-fit:cover;
 
 }
 
-/* Cursor light */
+/* CURSOR LIGHT */
 
 .card::before{
 
@@ -238,7 +263,6 @@ rgba(255,255,255,.4),
 transparent 60%);
 
 opacity:0;
-
 transition:.3s;
 
 }
@@ -247,7 +271,7 @@ transition:.3s;
 opacity:1;
 }
 
-/* overlay */
+/* OVERLAY */
 
 .overlay{
 
@@ -264,7 +288,7 @@ font-size:13px;
 
 }
 
-/* reveal */
+/* SCROLL REVEAL */
 
 .reveal{
 
@@ -288,7 +312,7 @@ transform:translateY(0);
 
 padding:120px;
 
-background:linear-gradient(135deg,#e8d3a5,#d4af7a);
+background:linear-gradient(135deg,var(--gold-light),var(--gold));
 
 text-align:center;
 
@@ -321,7 +345,7 @@ text-decoration:none;
 
 }
 
-/* WhatsApp button */
+/* WHATSAPP */
 
 .whatsapp{
 
@@ -348,7 +372,7 @@ box-shadow:0 15px 30px rgba(0,0,0,0.2);
 
 }
 
-/* Footer */
+/* FOOTER */
 
 footer{
 
@@ -397,7 +421,7 @@ font-size:120px;
 
 <div class="logo">इश्तर</div>
 
-<div>Luxury Jewelry</div>
+<div style="color:#ddd;">Luxury Jewelry</div>
 
 </nav>
 
@@ -449,7 +473,25 @@ font-size:120px;
 
 <script>
 
-/* CSV parser */
+/* NAVBAR SCROLL COLOR */
+
+window.addEventListener("scroll",()=>{
+
+let nav=document.querySelector("nav");
+
+if(window.scrollY>50){
+
+nav.classList.add("scrolled");
+
+}else{
+
+nav.classList.remove("scrolled");
+
+}
+
+});
+
+/* CSV PARSER */
 
 function parseCSV(text){
 
@@ -469,7 +511,7 @@ data.push(cols.map(c=>c.replace(/"/g,"")));
 return data;
 }
 
-/* load instagram posts */
+/* LOAD INSTAGRAM DATA */
 
 fetch("instagram.csv")
 .then(r=>r.text())
@@ -502,7 +544,7 @@ grid.appendChild(card);
 
 });
 
-/* reveal animation */
+/* SCROLL REVEAL */
 
 const observer=new IntersectionObserver(entries=>{
 
@@ -516,7 +558,7 @@ entry.target.classList.add("visible");
 
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-/* card tilt + light */
+/* CARD TILT + LIGHT */
 
 document.querySelectorAll(".card").forEach(card=>{
 
@@ -547,7 +589,7 @@ card.style.transform="rotateX(0) rotateY(0)";
 
 });
 
-/* hero parallax */
+/* HERO PARALLAX */
 
 window.addEventListener("scroll",()=>{
 
